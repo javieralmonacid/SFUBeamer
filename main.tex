@@ -1,0 +1,233 @@
+\documentclass[USenglish, aspectratio = 169]{beamer}
+
+\usetheme{SFUBeamer}
+\usepackage{style}
+
+% OTHER PACKAGES-------------------------------
+\usepackage{caption}
+\usepackage{booktabs}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%  DEFINITIONS 
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\norm}[1]{{\left\| \, #1 \, \right\|}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%  MAIN INFORMATION
+%  
+%  Picture in title frame is, for now, hard-coded in 
+%  beamerinnerthemeSFUBeamer.sty.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title[An SFU Beamer Template]{SFUBeamer: a PDFLatex-based beamer template for the SFU community}
+\subtitle{A spin-off of the OsloMet template}
+
+\author[J. Almonacid]{Javier Almonacid}
+\institute{Department of Mathematics | Simon Fraser University} 
+\date{July 14, 2023}  % Can also be used as date
+
+
+\begin{document}
+
+\section{Overview}
+% Use
+%
+%     \begin{frame}[allowframebreaks]
+%
+% if the TOC does not fit one frame.
+\begin{frame}{Table of contents}
+    \tableofcontents
+\end{frame}
+
+
+\section{Mathematics}
+\subsection{Theorem}
+
+%% Disable the logo in the lower right corner:
+\hidelogo
+
+\begin{frame}{Mathematics}
+
+    \begin{theorem}[Fermat's little theorem]
+        For a prime~\(p\) and \(a \in \mathbb{Z}\) it holds that \(a^p \equiv a \pmod{p}\).
+    \end{theorem}
+
+    \begin{proof}
+        The invertible elements in a field form a group under multiplication.
+        In particular, the elements
+        \begin{equation*}
+            1, 2, \ldots, p - 1 \in \mathbb{Z}_p
+        \end{equation*}
+        form a group under multiplication modulo~\(p\).
+        This is a group of order \(p - 1\).
+        For \(a \in \mathbb{Z}_p\) and \(a \neq 0\) we thus get \(a^{p-1} = 1 \in \mathbb{Z}_p\).
+        The claim follows.
+    \end{proof}
+\end{frame}
+
+%% Enable the logo in the lower right corner:
+\showlogo
+
+\subsection{Example}
+
+\begin{frame}{Mathematics}
+
+    \begin{example}
+        The function \(\phi \colon \mathbb{R} \to \mathbb{R}\) given by \(\phi(x) = 2x\) is continuous at the point \(x = \alpha\),
+        because if \(\epsilon > 0\) and \(x \in \mathbb{R}\) is such that \(\lvert x - \alpha \rvert < \delta = \frac{\epsilon}{2}\),
+        then
+        \begin{equation*}
+            \lvert \phi(x) - \phi(\alpha)\rvert = 2\lvert x - \alpha \rvert < 2\delta = \epsilon.
+        \end{equation*}
+    \end{example}
+\end{frame}
+
+\section{Highlighting}
+\SectionPage{0.6\textwidth}
+
+\begin{frame}{Highlighting}
+
+    Sometimes it is useful to \alert{highlight} certain words in the text.
+
+    \begin{alertblock}{Important message}
+        If a lot of text should be \alert{highlighted}, it is a good idea to put it in a box.
+    \end{alertblock}
+
+    You can also highlight with the \structure{structure} colour.
+\end{frame}
+
+\section{Lists}
+
+\begin{frame}{Lists}
+
+    \begin{itemize}
+        \item
+        Bullet lists are marked with a dark red box.
+    \end{itemize}
+
+    \begin{enumerate}
+        \item
+        \label{enum:item}
+        Numbered lists are marked with a black number inside a dark red box.
+    \end{enumerate}
+
+    \begin{description}
+        \item[Description] highlights important words with gray text.
+    \end{description}
+
+    Items in numbered lists like \enumref{enum:item} can be referenced with a dark red box.
+
+    \begin{example}
+        \begin{itemize}
+            \item
+            Lists change colour after the environment.
+        \end{itemize}
+    \end{example}
+\end{frame}
+
+\section{Effects (longer titles work best)}
+%---------------------------------------------------------------------
+% \SectionPageUpNext is a feature that requires further work. 
+% If you are not comfortable with the result, use \SectionPage{width}
+% instead.
+%---------------------------------------------------------------------
+\SectionPageUpNext{0.6\textwidth}{ \color{SFUDarkGray}
+This is a good point to remind your audience what they have seen so far.
+    \begin{itemize}
+    \item \color{SFUDarkGray} Item 1.
+    \item \color{SFUDarkGray} Item 2.
+    \item \color{SFUDarkGray} Item 3.
+    \end{itemize}
+}
+
+\begin{frame}{Effects}
+    \begin{columns}[onlytextwidth]
+        \begin{column}{0.49\textwidth}
+            \begin{enumerate}[<+-|alert@+>]
+                \item
+                Effects that control
+
+                \item
+                when text is displayed
+
+                \item
+                are specified with <> and a list of slides.
+            \end{enumerate}
+
+            \begin{theorem}<2>
+                This theorem is only visible on slide number 2.
+            \end{theorem}
+        \end{column}
+        \begin{column}{0.49\textwidth}
+            Use \textbf<2->{textblock} for arbitrary placement of objects.
+
+            \pause
+            \medskip
+
+            It creates a box
+            with the specified width (here in a percentage of the slide's width)
+            and upper left corner at the specified coordinate (x, y)
+            (here x is a percentage of width and y a percentage of height).
+        \end{column}
+    \end{columns}
+    
+    \only<1, 3>
+    {
+        \begin{textblock}{0.3}(0.45, 0.55)
+            \includegraphics[width = \textwidth]{example-image-a}
+        \end{textblock}
+    }
+\end{frame}
+
+\section{References}
+
+\begin{frame}[shrink=10]{References}
+
+    \begin{thebibliography}{}     
+        
+        \bibitem{b4}{
+		Y. Colin de V\`erdiere. \normalfont
+		Spectral theory of pseudo-differential operators of degree 0 and application to forced linear waves.
+		\emph{Anal. PDE} 13 (2020), no. 5, 1521–1537}
+		
+		\bibitem{b2}{
+        Y. Colin de V\`erdiere \& L. Saint-Raymond. \normalfont
+		Attractors for two dimensional waves with homogeneous Hamiltonians of degree 0.
+        \emph{Commun. Pure Appl. Anal.} 73 (2020), no. 2, 421--462.}
+		
+		\bibitem{b6}{
+		G. Davis, T. Jamin, J. Deleuze, S. Joubaud \& T. Dauxois. \normalfont
+		Succession of resonances to achieve internal wave turbulence.
+		Phys. Rev. Lett 124 (2020), 204502.}	
+		
+		\bibitem{b3}{
+        S. Dyatlov \& M. Zworski. \normalfont
+        Microlocal analysis of forced waves.
+        \emph{Pure Appl. Anal.} 1 (2019), 359--384.}	
+        
+        \bibitem{b5}{
+		J. Galkowski \& M. Zworski. \normalfont
+		Viscosity limits for 0th order pseudo-differential operators.
+		arXiv:1912.09840 (December 2019).}
+		
+		\bibitem{b1}{
+		L.R.M. Maas. \normalfont
+		Wave attractors: linear yet nonlinear.
+		\emph{Int. J. Bifurcat. Chaos} 15 (2005), no. 9, 2757--2782.}
+
+    \end{thebibliography}
+
+	\begin{center}
+	\textbf{Thank you!}
+	\end{center}
+\end{frame}
+
+
+
+
+\end{document}
